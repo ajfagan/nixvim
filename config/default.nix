@@ -72,7 +72,19 @@ config = {
 
 
 
-  colorschemes.cyberdream.enable = true;
+  colorschemes.cyberdream = {
+    enable = true;
+
+    settings = {
+      # Make background transparent
+      transparent = true;
+
+      # Enable italic comments
+      italic_comments = true;
+
+      terminal_colors = false;
+    };
+  };
 
 
   keymaps = [
