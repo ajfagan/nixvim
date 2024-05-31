@@ -97,7 +97,7 @@ config = {
   options = {
 
 	number = true;
-	relativenumber = true;
+	relativenumber = false;
 
 	shiftwidth = 2;
   };
