@@ -82,7 +82,7 @@ config = {
 	}
   ];
 
-  opts = {
+  options = {
 
 	number = true;
 	relativenumber = true;
