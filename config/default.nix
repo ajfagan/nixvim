@@ -23,6 +23,8 @@ config = {
 
     undotree.enable = true;
 
+    fugitive.enable = true;
+
     lsp = {
       enable = true;
       servers = {
@@ -94,7 +96,7 @@ config = {
   keymaps = [
 	{
 		action = "<cmd>Telescope live_grep<CR>";
-		key = "<leader>g";
+		key = "<leader>fs";
 	}
 	{
       action = "<cmd>CHADopen<CR>";
@@ -103,6 +105,10 @@ config = {
     {
       action = "<cmd>UndotreeToggle<CR>";
       key = "<leader>u";
+    }
+    {
+      action = "<cmd>Git<CR>";
+      key = "<leader>gs";
     }
   ];
 
