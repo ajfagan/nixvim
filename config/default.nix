@@ -25,9 +25,13 @@ config = {
 
     fugitive.enable = true;
 
+    trouble.enable = true;
+
     lsp = {
       enable = true;
       servers = {
+	nil_ls.enable = true;
+	tsserver.enable = true;
         lua-ls = {
 	  enable = true;
 	  settings.telemetry.enable = false;
@@ -38,26 +42,30 @@ config = {
 	  enable = true;
 	  installCargo = true;
 	  installRustc = true;
+
+	  autostart = true;
 	};
       };
     };
 
-  cmp.settings = {
+  #cmp.settings = {
+  cmp = {
     enable = true;
     autoEnableSources = true;
-    sources = [
-      {name = "nvim_lsp";}
-      {name = "path";}
-      {name = "buffer";}
-      {name = "luasnip";}
-    ];
-    mapping = {
-      "<CR>" = "cmp.mapping.confirm({ select = true })";
-      "<Tab>" = {
-	action = ''
-	  function(fallback)
-	    if cmp.visible() then
-	      cmp.select_next_item()
+    settings = {
+      sources = [ 
+	{name = "nvim_lsp";}
+	{name = "path";}
+	{name = "buffer";}
+	{name = "luasnip";}
+      ];
+      mapping = {
+	"<CR>" = "cmp.mapping.confirm({ select = true })";
+	"<Tab>" = 
+	  ''
+	    function(fallback)
+	      if cmp.visible() then
+		cmp.select_next_item()
 	      elseif luasnip.expandable() then
 		luasnip.expand()
 	      elseif luasnip.expand_or_jumpable() then
@@ -69,7 +77,6 @@ config = {
 	      end 
 	    end
 	  '';
-	modes = [ "i" "s" ];
       };
     };
   };
@@ -110,9 +117,13 @@ config = {
       action = "<cmd>Git<CR>";
       key = "<leader>gs";
     }
+    {
+      action = "<cmd>TroubleToggle<CR>";
+      key = "<leader>xx";
+    }
   ];
 
-  options = {
+ opts = {
 
 	number = true;
 	relativenumber = false;
