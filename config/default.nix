@@ -1,6 +1,6 @@
 { self, ... }: 
 {
-  # Import all your configuration modules here
+
 imports = [ ./bufferline.nix ];
 
 
@@ -20,6 +20,8 @@ config = {
     luasnip.enable = true;
 
     chadtree.enable = true;
+
+    undotree.enable = true;
 
     lsp = {
       enable = true;
@@ -95,9 +97,13 @@ config = {
 		key = "<leader>g";
 	}
 	{
-    action = "<cmd>CHADopen<CR>";
-    key = "<leader>v";
+      action = "<cmd>CHADopen<CR>";
+      key = "<leader>v";
 	}
+    {
+      action = "<cmd>UndotreeToggle<CR>";
+      key = "<leader>u";
+    }
   ];
 
   options = {
