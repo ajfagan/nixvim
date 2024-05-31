@@ -82,23 +82,19 @@ config = {
 	}
   ];
 
+  opts = {
+
+	number = true;
+	relativenumber = true;
+
+	shiftwidth = 2;
+  };
 
 };
 
 
 
 
-  options = {
-
- 
-
-
-
-	number = true;
-	relativenumber = true;
-
-	shiftwidth = 1;
-  };
 
 }
 
