@@ -36,7 +36,7 @@ config = {
 	  enable = true;
 	  settings.telemetry.enable = false;
 	};
-
+	texlab.enable = true;
 
 	rust-analyzer = {
 	  enable = true;
