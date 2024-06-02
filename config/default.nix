@@ -10,7 +10,7 @@ config = {
 
   plugins = {
     lualine.enable = true;
-  	
+
     telescope.enable = true;
 
     oil.enable = true;
@@ -27,7 +27,10 @@ config = {
 
     trouble.enable = true;
 
-    vimtex.enable = true;
+    vimtex = {
+      enable = true;
+      settings.vimtex_view_method = "zathura";
+    };
 
     lsp = {
       enable = true;
