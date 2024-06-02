@@ -27,6 +27,8 @@ config = {
 
     trouble.enable = true;
 
+    vimtex.enable = true;
+
     lsp = {
       enable = true;
       servers = {
@@ -122,7 +124,7 @@ config = {
  opts = {
 
 	number = true;
-	relativenumber = false;
+	relativenumber = true;
 
 	shiftwidth = 2;
   };
