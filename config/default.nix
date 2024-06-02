@@ -68,8 +68,6 @@ config = {
 		cmp.select_next_item()
 	      elseif require("luasnip").expand_or_jumpable() then
 		luasnip.expand_or_jump()
-	      elseif check_backspace() then
-		fallback()
 	      else
 		fallback()
 	      end 
