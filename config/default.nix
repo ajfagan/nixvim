@@ -1,10 +1,11 @@
-{ self, ... }: 
+{ self, pkgs, lib, ... }: with lib; 
 {
 
 imports = [ ./bufferline.nix ];
 
 
 config = {
+
 
   globals.mapleader = " ";
 
@@ -27,9 +28,16 @@ config = {
 
     trouble.enable = true;
 
-    vimtex = {
+    vimtex = let 
+      view_method = "zathura";
+      compiler_method = "latexrun";
+    in 
+    {
       enable = true;
-      settings.vimtex_view_method = "zathura";
+      settings = {
+	view_method = view_method;
+	#compiler_method = compiler_method; 
+      };
     };
 
     lsp = {
