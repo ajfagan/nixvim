@@ -1,4 +1,4 @@
-{ self, pkgs, lib, ... }: with lib; 
+{ self, pkgs, lib, texlivePackage, ... }: with lib; 
 {
 
 imports = [ ./bufferline.nix ];
@@ -30,14 +30,15 @@ config = {
 
     vimtex = let 
       view_method = "zathura";
-      compiler_method = "latexrun";
+      compiler_method = "latexmk";
     in 
     {
       enable = true;
-      settings = {
+      settings = { 
 	view_method = view_method;
-	#compiler_method = compiler_method; 
+	compiler_method = compiler_method; 
       };
+      inherit texlivePackage;
     };
 
     lsp = {
@@ -110,14 +111,14 @@ config = {
 
 
   keymaps = [
-	{
-		action = "<cmd>Telescope live_grep<CR>";
-		key = "<leader>fs";
-	}
-	{
+    {
+      action = "<cmd>Telescope live_grep<CR>";
+      key = "<leader>fs";
+    }
+    {
       action = "<cmd>CHADopen<CR>";
       key = "<leader>v";
-	}
+    }
     {
       action = "<cmd>UndotreeToggle<CR>";
       key = "<leader>u";

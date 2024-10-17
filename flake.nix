@@ -3,7 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixvim.url = "github:nix-community/nixvim";
+    nixvim = {
+	url = "github:nix-community/nixvim";
+	inputs.nixpkgs.follows = "nixpkgs";
+    };
     flake-parts.url = "github:hercules-ci/flake-parts";
   };
 
@@ -22,13 +25,20 @@
         let
           nixvimLib = nixvim.lib.${system};
           nixvim' = nixvim.legacyPackages.${system};
+	  texlivePackage = (pkgs.texlive.combine {
+	    inherit (pkgs.texlive) scheme-full
+	      dvisvgm dvipng # for preview and export as html
+	      wrapfig amsmath ulem hyperref capt-of
+	      bbm;
+	  });
           nixvimModule = {
             inherit pkgs;
             module = import ./config; # import the module directly
             # You can use `extraSpecialArgs` to pass additional arguments to your module files
             extraSpecialArgs = {
               # inherit (inputs) foo;
-	      inherit (inputs) xclip ripgrep;
+	      inherit (inputs) xclip ripgrep; 
+	      inherit texlivePackage;
             };
           };
           nvim = nixvim'.makeNixvimWithModule nixvimModule;
@@ -40,6 +50,7 @@
           };
 
           packages = {
+	    inherit nvim;
             # Lets you run `nix run .` to start nixvim
             default = nvim;
           };
