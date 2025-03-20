@@ -42,14 +42,14 @@
             };
           };
           nvimRaw = nixvim'.makeNixvimWithModule nixvimModule;
-	  nvim = pkgs.wrapNeovim nvimRaw {
-	    meta = {
+	  nvim = nvimRaw.overrideAttrs (old: {
+	    meta = old.meta or {} // {
 	      description = "Custom Nixvim config";
 	      license = pkgs.lib.licenses.mit;
 	      maintainers = [ "ajfagan" ];
 	      platforms = pkgs.lib.platforms.all;
 	    };
-	  };
+	  });
         in
         {
           checks = {
