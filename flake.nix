@@ -41,7 +41,15 @@
 	      inherit texlivePackage;
             };
           };
-          nvim = nixvim'.makeNixvimWithModule nixvimModule;
+          nvimRaw = nixvim'.makeNixvimWithModule nixvimModule;
+	  nvim = pkgs.wrapNeovim nvimRaw {
+	    meta = {
+	      description = "Custom Nixvim config";
+	      license = pkgs.lib.licenses.mit;
+	      maintainers = [ "ajfagan" ];
+	      platforms = pkgs.lib.platforms.all;
+	    };
+	  };
         in
         {
           checks = {
