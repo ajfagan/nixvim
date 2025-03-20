@@ -55,7 +55,6 @@
             default = nvim;
           };
 
-	  defaultPackage = nvim;
         };
     };
 }
